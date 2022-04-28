@@ -1,0 +1,148 @@
+_schema-version: "3.1"
+ID: UI5WithCap
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: UI5WithCap-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: UI5WithCap-db
+  - name: UI5WithCap_connectivity
+  - name: uaa_UI5WithCap
+  - name: UI5WithCap_destination
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm-ci
+    ignore: ["node_modules/"]
+- name: UI5WithCap-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: UI5WithCap-db
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    ignore: ["node_modules/"]
+- name: UI5WithCap-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: UI5WithCap_destination
+    parameters:
+      content-target: true
+  - name: UI5WithCap_html_repo_host
+    parameters:
+      service-key:
+        name: UI5WithCap_html_repo_host-key
+  - name: uaa_UI5WithCap
+    parameters:
+      service-key:
+        name: uaa_UI5WithCap-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: approuter_UI5WithCap_html_repo_host
+          ServiceInstanceName: UI5WithCap-html5-app-host-service
+          ServiceKeyName: UIWithCap_html_repo_host-key
+          sap.cloud.service: approuter
+        - Authentication: OAuth2UserTokenExchange
+          Name: approuter_uaa_UI5WithCap
+          ServiceInstanceName: UI5WithCap-xsuaa-service
+          ServiceKeyName: uaa_UI5WithCap-key
+          sap.cloud.service: approuter
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: ui5withcap-approuter
+  type: approuter.nodejs
+  path: ui5withcap-approuter
+  requires:
+  - name: UI5WithCap_html_repo_runtime
+  - name: uaa_UI5WithCap
+  - name: UI5WithCap_destination
+  - name: UI5WithCap_connectivity
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: UI5WithCap_ui_deployer
+  type: com.sap.application.content 
+  path: .
+  requires:
+    - name: UI5WithCap_html_repo_host
+      parameters:
+        content-target: true
+  build-parameters:
+      build-result: resources
+      requires:
+      - artifacts:
+        - listservices.zip
+        name: listservices
+        target-path: resources/
+- name: listservices
+  type: html5
+  path: list_services
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: UI5WithCap_destination
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service-plan: lite
+    service: destination
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+- name: UI5WithCap_connectivity
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service-plan: lite
+    service: connectivity
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+- name: UI5WithCap-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+  properties:
+    hdi-service-name: ${service-name}
+- name: UI5WithCap_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: uaa_UI5WithCap
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: UI5WithCap-xsuaa-service
+    service-plan: application
+- name: UI5WithCap_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: UI5WithCap-html5-app-host-service
+    service-plan: app-host
+    config: 
+      sizeLimit: 16
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx -p @sap/cds-dk cds build --production
