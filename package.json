@@ -1,0 +1,64 @@
+{
+    "name": "UI5WithCap",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^5",
+        "express": "^4.17.3",
+        "generate-openapi": "^1.0.1",
+        "hdb": "^0.18.3",
+        "jstoxml": "^3.2.3",
+        "node-gyp": "^8.4.1",
+        "odata-openapi": "^0.16.0",
+        "passport": "^0.5.2",
+        "swagger-ui-express": "^4.3.0",
+        "unescape": "^1.0.1",
+        "xml-string": "^2.0.2",
+        "xslt-processor": "^0.11.5"
+    },
+    "devDependencies": {
+        "sqlite3": "^5.0.2",
+        "ajv-cli": "^3"
+    },
+    "scripts": {
+        "start": "cds run"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sql"
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        }
+    }
+}

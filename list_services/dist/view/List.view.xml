@@ -1,0 +1,43 @@
+<mvc:View
+    controllerName="listservices.controller.List"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:f="sap.f"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                        <OverflowToolbar>
+                            <SearchField liveChange=".getAvailableServices" width="40%"/>
+                        </OverflowToolbar>
+                            <Panel id="panelForGridList">
+                    <f:GridList
+                        id="gridList"
+                        headerText="Available OData services"
+                        growing="true"
+                        growingThreshold="50"
+                        items="{/services}">
+                        <f:customLayout>
+                            <grid:GridBoxLayout boxMinWidth="19rem"/>
+                        </f:customLayout>
+                        <f:GridListItem press="servicePressed">
+                            <VBox class="sapUiSmallMargin">
+                                <layoutData press="servicePressed">
+                                    <FlexItemData growFactor="1" shrinkFactor="0" /> <!-- Don't shrink below minimum size. Fill space if available. -->
+                                </layoutData>
+                                <Title text="{Title}" wrapping="true" />
+                                <Title text="{Description}" wrapping="true" />
+                                <Button press="servicePressed"/> 
+                            </VBox>
+                        </f:GridListItem>
+                        
+                    </f:GridList>
+                </Panel>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

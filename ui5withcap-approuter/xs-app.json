@@ -1,0 +1,11 @@
+{
+  "authenticationMethod": "route",
+  "routes": [
+    {
+        "source": "^/sap/opu/(.*)$",
+        "target": "/sap/opu/$1",
+        "destination": "ODataDest",
+        "authenticationType": "xsuaa"
+    }
+  ]
+}

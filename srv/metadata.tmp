@@ -1,0 +1,2686 @@
+<?xml version="1.0" encoding="UTF-8"?><edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+<edmx:Include Namespace="Org.OData.Core.V1" Alias="Core"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+</edmx:Reference>
+<edmx:DataServices>
+<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MM_PUR_RFQITEM_MNTR_SRV">
+<Annotation String="2.0" Term="com.sap.vocabularies.Common.v1.OriginalProtocolVersion"/>
+<EntityType Name="C_MM_CompanyCodeValueHelpType">
+<Annotation Term="Common.Label" String="Invoerhulp bedrijfsnummer"/>
+<Key>
+<PropertyRef Name="CompanyCode"/>
+</Key>
+<Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="CompanyCodeName"/>
+<Annotation Term="Common.Label" String="Bedrijfsnummer"/>
+</Property>
+<Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25">
+<Annotation Term="Common.Label" String="Naam van bedrijf"/>
+<Annotation Term="Common.QuickInfo" String="Omschrijving van bedrijfsnummer of bedrijf"/>
+</Property>
+</EntityType>
+<EntityType Name="C_MM_IncotermValueHelpType">
+<Annotation Term="Common.Label" String="Incoterm - invoerhulp"/>
+<Key>
+<PropertyRef Name="IncotermsClassification"/>
+<PropertyRef Name="IncotermsVersion"/>
+</Key>
+<Property Name="IncotermsClassification" Type="Edm.String" Nullable="false" MaxLength="3">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="IncotermsClassificationName"/>
+<Annotation Term="Common.Label" String="Incoterms"/>
+<Annotation Term="Common.QuickInfo" String="Incoterms deel 1"/>
+</Property>
+<Property Name="IncotermsVersion" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Incoterms-versie"/>
+</Property>
+<Property Name="IncotermsClassificationName" Type="Edm.String" MaxLength="30">
+<Annotation Term="Common.Label" String="Omschrijving"/>
+</Property>
+<Property Name="LocationIsMandatory" Type="Edm.Boolean">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Locatie verplicht"/>
+<Annotation Term="Common.QuickInfo" String="Locatie is verplicht"/>
+</Property>
+</EntityType>
+<EntityType Name="C_MM_MaterialGroupValueHelpType">
+<Annotation Term="Common.Label" String="Invoerhulp goederengroep"/>
+<Key>
+<PropertyRef Name="MaterialGroup"/>
+</Key>
+<Property Name="MaterialGroup" Type="Edm.String" Nullable="false" MaxLength="9">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="MaterialGroupName"/>
+<Annotation Term="Common.Label" String="Productgroep"/>
+</Property>
+<Property Name="MaterialGroupName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Omschrijving productgroep"/>
+<Annotation Term="Common.QuickInfo" String="Productgroepomschrijving"/>
+</Property>
+</EntityType>
+<EntityType Name="C_MM_MaterialValueHelpType">
+<Annotation Term="Common.Label" String="Invoerhulp artikel"/>
+<Key>
+<PropertyRef Name="Material"/>
+<PropertyRef Name="Plant"/>
+</Key>
+<Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="MaterialName"/>
+<Annotation Term="Common.Label" String="Artikel"/>
+<Annotation Term="Common.QuickInfo" String="Artikelnummer"/>
+</Property>
+<Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Vestiging"/>
+</Property>
+<Property Name="MaterialName" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Artikelomschrijving"/>
+</Property>
+<Property Name="PlantName" Type="Edm.String" MaxLength="30">
+<Annotation Term="Common.Label" String="Naam vestiging"/>
+</Property>
+<Property Name="MaterialGroup" Type="Edm.String" MaxLength="9">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Goederengroep"/>
+</Property>
+<Property Name="MaterialGroupName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Productgroepomschr."/>
+<Annotation Term="Common.QuickInfo" String="Productgroepomschrijving"/>
+</Property>
+<Property Name="MaterialType" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Artikelsoort"/>
+</Property>
+<Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Bevoegdheidsgroep"/>
+</Property>
+<Property Name="MaterialTypeName" Type="Edm.String" MaxLength="25">
+<Annotation Term="Common.Label" String="Omschr. artikelsoort"/>
+<Annotation Term="Common.QuickInfo" String="Omschrijving artikelsoort"/>
+</Property>
+<Property Name="MaterialBaseUnit" Type="Edm.String" MaxLength="3">
+<Annotation Term="Common.Label" String="Basishoevh.eenheid"/>
+<Annotation Term="Common.QuickInfo" String="Basishoeveelheidseenheid"/>
+</Property>
+</EntityType>
+<EntityType Name="C_MM_PaymentTermValueHelpType">
+<Annotation Term="Common.Label" String="Betalingsconditie - invoerhulp"/>
+<Key>
+<PropertyRef Name="PaymentTerms"/>
+<PropertyRef Name="PaymentTermsValidityMonthDay"/>
+</Key>
+<Property Name="PaymentTerms" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PaymentTermsName"/>
+<Annotation Term="Common.Label" String="Betalingscondities"/>
+<Annotation Term="Common.QuickInfo" String="Key betalingscondities"/>
+</Property>
+<Property Name="PaymentTermsValidityMonthDay" Type="Edm.String" Nullable="false" MaxLength="2">
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Label" String="Daggrens"/>
+</Property>
+<Property Name="PaymentTermsName" Type="Edm.String" MaxLength="30">
+<Annotation Term="Common.Label" String="Omschrijving"/>
+<Annotation Term="Common.QuickInfo" String="Omschrijving van betalingscondities"/>
+</Property>
+<Property Name="CashDiscount1Days" Type="Edm.Decimal" Precision="3" Scale="0">
+<Annotation Term="Common.Label" String="Betal.kort.dagen 1"/>
+<Annotation Term="Common.QuickInfo" String="Betalingskortingdagen 1"/>
+</Property>
+<Property Name="CashDiscount1Percent" Type="Edm.Decimal" Precision="5" Scale="3">
+<Annotation Term="Common.Label" String="Kortingspercentage 1"/>
+<Annotation Term="Common.QuickInfo" String="Betalingskortingpercentage 1"/>
+</Property>
+<Property Name="CashDiscount2Days" Type="Edm.Decimal" Precision="3" Scale="0">
+<Annotation Term="Common.Label" String="Betal.kort.dagen 2"/>
+<Annotation Term="Common.QuickInfo" String="Betalingskortingdagen 2"/>
+</Property>
+<Property Name="CashDiscount2Percent" Type="Edm.Decimal" Precision="5" Scale="3">
+<Annotation Term="Common.Label" String="Kortingspercentage 2"/>
+<Annotation Term="Common.QuickInfo" String="Betalingskortingpercentage 2"/>
+</Property>
+<Property Name="NetPaymentDays" Type="Edm.Decimal" Precision="3" Scale="0">
+<Annotation Term="Common.Label" String="Dagen netto"/>
+<Annotation Term="Common.QuickInfo" String="Periode nettobetalingscondities"/>
+</Property>
+</EntityType>
+<EntityType Name="C_MM_PlantValueHelpType">
+<Annotation Term="Common.Label" String="Vestiging - invoerhulp"/>
+<Key>
+<PropertyRef Name="Plant"/>
+<PropertyRef Name="PurchasingOrganization"/>
+</Key>
+<Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PlantName"/>
+<Annotation Term="Common.Label" String="Vestiging"/>
+</Property>
+<Property Name="PurchasingOrganization" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurchasingOrganizationName"/>
+<Annotation Term="Common.Label" String="Inkooporganisatie"/>
+</Property>
+<Property Name="PlantName" Type="Edm.String" MaxLength="30">
+<Annotation Term="Common.Label" String="Naam vestiging"/>
+</Property>
+<Property Name="PurchasingOrganizationName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Naam inkooporganisatie"/>
+</Property>
+<Property Name="CityName" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Plaats"/>
+</Property>
+<Property Name="PostalCode" Type="Edm.String" MaxLength="10">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Postcode"/>
+<Annotation Term="Common.QuickInfo" String="Postcode van de plaats"/>
+</Property>
+</EntityType>
+<EntityType Name="C_MM_SmplSupplierValueHelpType">
+<Annotation Term="Common.Label" String="Vereenvoudigde invoerhulp voor leveranciers"/>
+<Key>
+<PropertyRef Name="Supplier"/>
+<PropertyRef Name="CompanyCode"/>
+</Key>
+<Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="SupplierName"/>
+<Annotation Term="Common.Label" String="Leverancier"/>
+<Annotation Term="Common.QuickInfo" String="Rekeningnummer van leverancier/crediteur"/>
+</Property>
+<Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Bedrijfsnummer"/>
+</Property>
+<Property Name="SupplierName" Type="Edm.String" MaxLength="80">
+<Annotation Term="Common.Label" String="Naam van leverancier"/>
+</Property>
+<Property Name="Country" Type="Edm.String" MaxLength="3">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Landcode"/>
+</Property>
+<Property Name="FirstName" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Voornaam"/>
+<Annotation Term="Common.QuickInfo" String="Voornaam van de zakenpartner (persoon)"/>
+</Property>
+<Property Name="LastName" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Achternaam"/>
+<Annotation Term="Common.QuickInfo" String="Achternaam van de zakenpartner (persoon)"/>
+</Property>
+<Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Naam 1"/>
+<Annotation Term="Common.QuickInfo" String="Naam 1 van organisatie"/>
+</Property>
+<Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Naam 2"/>
+<Annotation Term="Common.QuickInfo" String="Naam 2 van organisatie"/>
+</Property>
+<Property Name="OrganizationBPName3" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Naam 3"/>
+<Annotation Term="Common.QuickInfo" String="Naam 3 van organisatie"/>
+</Property>
+<Property Name="OrganizationBPName4" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Naam 4"/>
+<Annotation Term="Common.QuickInfo" String="Naam 4 van organisatie"/>
+</Property>
+<Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Bevoegdheid"/>
+<Annotation Term="Common.QuickInfo" String="Bevoegdheidsgroep"/>
+</Property>
+<Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Rekeninggroep"/>
+<Annotation Term="Common.QuickInfo" String="Rekeninggroep crediteur"/>
+</Property>
+</EntityType>
+<EntityType Name="C_PurchasingCategoryValueHelpType">
+<Annotation Term="Common.Label" String="Inkoopcategorie - invoerhulp"/>
+<Key>
+<PropertyRef Name="PurgCatUUID"/>
+<PropertyRef Name="PurchasingCategory"/>
+</Key>
+<Property Name="PurgCatUUID" Type="Edm.Guid" Nullable="false">
+<Annotation Term="Common.Text" Path="PurgCatName"/>
+<Annotation Term="Common.Label" String="Inkoopcategorie-UUID"/>
+</Property>
+<Property Name="PurchasingCategory" Type="Edm.String" Nullable="false" MaxLength="20">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurgCatName"/>
+<Annotation Term="Common.Label" String="Inkoopcategorie"/>
+<Annotation Term="Common.QuickInfo" String="Inkoopcategorie-ID"/>
+</Property>
+<Property Name="PurgCatName" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Inkoopcategorienaam"/>
+<Annotation Term="Common.QuickInfo" String="Naam inkoopcategorie"/>
+</Property>
+<Property Name="PurgCatIsInactive" Type="Edm.String" MaxLength="1">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Status"/>
+<Annotation Term="Common.QuickInfo" String="Inactieve status"/>
+</Property>
+</EntityType>
+<EntityType Name="C_PurchasingGroupValueHelpType">
+<Annotation Term="Common.Label" String="Invoerhulp inkoopgroep"/>
+<Key>
+<PropertyRef Name="PurchasingGroup"/>
+</Key>
+<Property Name="PurchasingGroup" Type="Edm.String" Nullable="false" MaxLength="3">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurchasingGroupName"/>
+<Annotation Term="Common.Label" String="Inkoopgroep"/>
+</Property>
+<Property Name="PurchasingGroupName" Type="Edm.String" MaxLength="18">
+<Annotation Term="Common.Label" String="Naam van inkoopgroep"/>
+<Annotation Term="Common.QuickInfo" String="Naam inkoopgroep"/>
+</Property>
+<Property Name="PurchasingGroupPhoneNumber" Type="Edm.String" MaxLength="12">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Telefoonnummer inkoopgroep"/>
+<Annotation Term="Common.QuickInfo" String="Telefoonnummer van inkoopgroep"/>
+</Property>
+<Property Name="PhoneNumber" Type="Edm.String" MaxLength="30">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Tel.nr. met snelkiescode"/>
+<Annotation Term="Common.QuickInfo" String="Telefoonnr.: netnummer+abonneenummer"/>
+</Property>
+<Property Name="PhoneNumberExtension" Type="Edm.String" MaxLength="10">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Doorkiesnr."/>
+<Annotation Term="Common.QuickInfo" String="Telefoonnummer: doorkiesnummer"/>
+</Property>
+<Property Name="FaxNumber" Type="Edm.String" MaxLength="31">
+<Annotation Term="Common.Label" String="Fax"/>
+<Annotation Term="Common.QuickInfo" String="Faxnummer van de inkoopgroep"/>
+</Property>
+<Property Name="EmailAddress" Type="Edm.String" MaxLength="241">
+<Annotation Term="Common.Label" String="E-mailadres"/>
+<Annotation Term="Communication.IsEmailAddress"/>
+</Property>
+</EntityType>
+<EntityType Name="C_PurchasingOrgValueHelpType">
+<Annotation Term="Common.Label" String="Inkooporganisatie - invoerhulp"/>
+<Key>
+<PropertyRef Name="PurchasingOrganization"/>
+</Key>
+<Property Name="PurchasingOrganization" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurchasingOrganizationName"/>
+<Annotation Term="Common.Label" String="Inkooporganisatie"/>
+</Property>
+<Property Name="PurchasingOrganizationName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Naam inkooporganisatie"/>
+</Property>
+<Property Name="CompanyCode" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="CompanyCodeName"/>
+<Annotation Term="Common.Label" String="Bedrijfsnummer"/>
+</Property>
+<Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25">
+<Annotation Term="Common.Label" String="Naam van bedrijf"/>
+<Annotation Term="Common.QuickInfo" String="Omschrijving van bedrijfsnummer of bedrijf"/>
+</Property>
+</EntityType>
+<EntityType Name="C_PurDocItemCategoryValueHelpType">
+<Annotation Term="Common.Label" String="Inkoopdocumentpositie - categorie - invoerhulp"/>
+<Key>
+<PropertyRef Name="PurchasingDocumentItemCategory"/>
+</Key>
+<Property Name="PurchasingDocumentItemCategory" Type="Edm.String" Nullable="false" MaxLength="1">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurgDocItemCategoryName"/>
+<Annotation Term="Common.Label" String="Positietype"/>
+<Annotation Term="Common.QuickInfo" String="Positietype in inkoopdocument"/>
+</Property>
+<Property Name="PurgDocExternalItemCategory" Type="Edm.String" MaxLength="1">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurgDocItemCategoryName"/>
+<Annotation Term="Common.Label" String="Positietype"/>
+<Annotation Term="Common.QuickInfo" String="Positietype in inkoopdocument"/>
+</Property>
+<Property Name="PurgDocItemCategoryName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Tekst positietype"/>
+<Annotation Term="Common.QuickInfo" String="Tekst van positietype"/>
+</Property>
+</EntityType>
+<EntityType Name="C_PurrfqstatusType">
+<Annotation Term="Common.Label" String="AANVRAAGSTATUS INVOERHULP"/>
+<Key>
+<PropertyRef Name="Status"/>
+</Key>
+<Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="2">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="Name"/>
+<Annotation Term="Common.Label" String="Status"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraag - levenscyclusstatus"/>
+</Property>
+<Property Name="Name" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Status"/>
+<Annotation Term="Common.QuickInfo" String="Teksten levenscyclusstatus offerteaanvraag"/>
+</Property>
+</EntityType>
+<EntityType Name="C_QTNFollowOnDocumentVHType">
+<Annotation Term="Common.Label" String="Vervolgdocument leveranciersofferte"/>
+<Key>
+<PropertyRef Name="SupplierQuotationType"/>
+<PropertyRef Name="FollowOnDocumentCategory"/>
+<PropertyRef Name="FollowOnDocumentType"/>
+</Key>
+<Property Name="SupplierQuotationType" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Type offerte"/>
+<Annotation Term="Common.QuickInfo" String="Documenttype leveranciersofferte"/>
+</Property>
+<Property Name="FollowOnDocumentCategory" Type="Edm.String" Nullable="false" MaxLength="1">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Type doeldocument"/>
+<Annotation Term="Common.QuickInfo" String="Type doelinkoopdocument"/>
+</Property>
+<Property Name="FollowOnDocumentType" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="FollowOnDocumentType_Text"/>
+<Annotation Term="Common.Label" String="Vervolgdocumentsoort"/>
+<Annotation Term="Common.QuickInfo" String="Type inkoopvervolgdocument"/>
+</Property>
+<Property Name="FollowOnDocumentType_Text" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Omschr. docum.soort"/>
+<Annotation Term="Common.QuickInfo" String="Omschrijving van de inkoopdocumentsoort"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+</EntityType>
+<EntityType Name="C_RequestForQuotationItemMntrResult">
+<Annotation Term="Common.Label" String="Aanvraag voor offerteposities bewaken"/>
+<Key>
+<PropertyRef Name="ID"/>
+</Key>
+<Property Name="ID" Type="Edm.String" Nullable="false"/>
+<Property Name="RequestForQuotation" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Offerteaanvraag"/>
+<Annotation Term="Common.QuickInfo" String="Documentnummer van inkoopdocument"/>
+</Property>
+<Property Name="RequestForQuotationItem" Type="Edm.String" MaxLength="5">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Label" String="Aanvraagpositie"/>
+<Annotation Term="Common.QuickInfo" String="Positienummer van aanvraag voor offerte"/>
+</Property>
+<Property Name="SupplierQuotation" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Leveranciersofferte"/>
+<Annotation Term="Common.QuickInfo" String="Documentnummer van inkoopdocument"/>
+</Property>
+<Property Name="SupplierQuotationItem" Type="Edm.String" MaxLength="5">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Leveranciersoffertepositie"/>
+</Property>
+<Property Name="DisplayCurrency" Type="Edm.String" MaxLength="5">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Weergavevaluta"/>
+</Property>
+<Property Name="NetAmount" Type="Edm.Decimal" Precision="31" Scale="3">
+<Annotation Term="Analytics.Measure"/>
+<Annotation Term="Measures.ISOCurrency" Path="DisplayCurrency"/>
+<Annotation Term="Common.Label" String="Ingediende offertewaarde"/>
+</Property>
+<Property Name="PriceQuotation" Type="Edm.Decimal" Precision="31" Scale="3">
+<Annotation Term="Analytics.Measure"/>
+<Annotation Term="Measures.ISOCurrency" Path="DisplayCurrency"/>
+<Annotation Term="Common.Label" String="Toegekende offertewaarde"/>
+</Property>
+<Property Name="Supplier" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="SupplierName"/>
+<Annotation Term="Common.Label" String="Leverancier"/>
+</Property>
+<Property Name="SupplierName" Type="Edm.String" MaxLength="80">
+<Annotation Term="Common.Label" String="Naam leverancier"/>
+<Annotation Term="Common.QuickInfo" String="Naam van leverancier"/>
+</Property>
+<Property Name="ActiveSupplierQuotation" Type="Edm.String" MaxLength="16">
+<Annotation Term="Analytics.Dimension"/>
+</Property>
+<Property Name="RefPurchaseRequisitionItem" Type="Edm.String" MaxLength="16">
+<Annotation Term="Analytics.Dimension"/>
+</Property>
+<Property Name="ActiveRFQItem" Type="Edm.Int64">
+<Annotation Term="Analytics.Measure"/>
+<Annotation Term="Common.Label" String="Positieaantal"/>
+</Property>
+<Property Name="NumberOfContractItems" Type="Edm.Int32">
+<Annotation Term="Analytics.Measure"/>
+<Annotation Term="Common.Label" String="Aanvraagposities"/>
+</Property>
+<Property Name="Material" Type="Edm.String" MaxLength="40">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="MaterialName"/>
+<Annotation Term="Common.Label" String="Artikel"/>
+<Annotation Term="Common.QuickInfo" String="Artikelnummer"/>
+</Property>
+<Property Name="MaterialName" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Artikelomschrijving"/>
+</Property>
+<Property Name="PurchasingDocumentItemText" Type="Edm.String" MaxLength="40">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Korte tekst"/>
+</Property>
+<Property Name="Plant" Type="Edm.String" MaxLength="4">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PlantName"/>
+<Annotation Term="Common.Label" String="Vestiging"/>
+</Property>
+<Property Name="PlantName" Type="Edm.String" MaxLength="30">
+<Annotation Term="Common.Label" String="Naam vestiging"/>
+</Property>
+<Property Name="PurchaseRequisition" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Aanvraag tot bestellen"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraag-tot-bestellen-nummer"/>
+</Property>
+<Property Name="PurchaseRequisitionItem" Type="Edm.String" MaxLength="5">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Positie aanvraag tot bestellen"/>
+</Property>
+<Property Name="RFQType" Type="Edm.String" MaxLength="4">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurchasingDocumentTypeName"/>
+<Annotation Term="Common.Label" String="Aanvraagsoort"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraagdocumentsoort"/>
+</Property>
+<Property Name="PurchasingDocumentType" Type="Edm.String" MaxLength="4">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Aanvraagsoort"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraagdocumentsoort"/>
+</Property>
+<Property Name="ActiveRequestForQuotation" Type="Edm.String" MaxLength="16">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Text" Path="PurchasingDocumentTypeName"/>
+</Property>
+<Property Name="PurchasingDocumentTypeName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Omschrijving documentsoort"/>
+<Annotation Term="Common.QuickInfo" String="Naam inkoopdocumentsoort"/>
+</Property>
+<Property Name="FormattedRFQItem" Type="Edm.String" MaxLength="16">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Offerteaanvraag/positie"/>
+</Property>
+<Property Name="RequestForQuotationName" Type="Edm.String" MaxLength="40">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Oms. aanvraag"/>
+<Annotation Term="Common.QuickInfo" String="Korte omschrijving van titel van aanvraag"/>
+</Property>
+<Property Name="BindingPeriodValidityEndDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Geldigheidstermijn"/>
+<Annotation Term="Common.QuickInfo" String="Offertegeldigheidstermijn"/>
+</Property>
+<Property Name="PurgDocExternalItemCategory" Type="Edm.String" MaxLength="1">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurgDocItemCategoryName"/>
+<Annotation Term="Common.Label" String="Positietype"/>
+<Annotation Term="Common.QuickInfo" String="Positietype in inkoopdocument"/>
+</Property>
+<Property Name="PurgDocItemCategoryName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Omschr. positietype"/>
+<Annotation Term="Common.QuickInfo" String="Tekst voor positietype"/>
+</Property>
+<Property Name="OrderQuantityUnit" Type="Edm.String" MaxLength="3">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Bestelhoevh.eenheid"/>
+<Annotation Term="Common.QuickInfo" String="Bestelhoeveelheidseenheid"/>
+</Property>
+<Property Name="ScheduleLineOrderQuantity" Type="Edm.Decimal" Precision="13" Scale="3">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Measures.Unit" Path="OrderQuantityUnit"/>
+<Annotation Term="Common.Label" String="Requested_Qty"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraaghoeveelheid"/>
+</Property>
+<Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Valuta"/>
+<Annotation Term="Common.QuickInfo" String="Valutacode"/>
+</Property>
+<Property Name="RFQLifecycleStatusName" Type="Edm.String" MaxLength="60">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Status"/>
+<Annotation Term="Common.QuickInfo" String="Teksten levenscyclusstatus offerteaanvraag"/>
+</Property>
+<Property Name="Status" Type="Edm.String" MaxLength="2">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Status"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraag - levenscyclusstatus"/>
+</Property>
+<Property Name="RFQLifecycleStatus" Type="Edm.String" MaxLength="2">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Status"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraag - levenscyclusstatus"/>
+</Property>
+<Property Name="ScheduleLineDeliveryDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Leveringsdatum"/>
+</Property>
+<Property Name="StorageLocation" Type="Edm.String" MaxLength="4">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="StorageLocationName"/>
+<Annotation Term="Common.Label" String="Magazijn"/>
+</Property>
+<Property Name="StorageLocationName" Type="Edm.String" MaxLength="16">
+<Annotation Term="Common.Label" String="Naam magazijn"/>
+<Annotation Term="Common.QuickInfo" String="Naam opslagplaats"/>
+</Property>
+<Property Name="PurOrdOverdueDate" Type="Edm.String" MaxLength="1">
+<Annotation Term="Analytics.Dimension"/>
+</Property>
+<Property Name="DueDateCriticality" Type="Edm.Byte">
+<Annotation Term="TODO.aggregation_role" String="None"/>
+</Property>
+<Property Name="QuotationLatestSubmissionDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Datum offertetermijn"/>
+<Annotation Term="Common.QuickInfo" String="Afgiftetermijn voor de offerte"/>
+</Property>
+<Property Name="CompanyCode" Type="Edm.String" MaxLength="4">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="CompanyCodeName"/>
+<Annotation Term="Common.Label" String="Bedrijfsnummer"/>
+</Property>
+<Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25">
+<Annotation Term="Common.Label" String="Bedrijfsnaam"/>
+<Annotation Term="Common.QuickInfo" String="Omschrijving van bedrijfsnummer of bedrijf"/>
+</Property>
+<Property Name="MaterialGroup" Type="Edm.String" MaxLength="9">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="MaterialGroupName"/>
+<Annotation Term="Common.Label" String="Goederengroep"/>
+</Property>
+<Property Name="MaterialGroupName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Goederengroepomschrijving"/>
+<Annotation Term="Common.QuickInfo" String="Productgroepomschrijving"/>
+</Property>
+<Property Name="PurchasingCategory" Type="Edm.String" MaxLength="20">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurgCatName"/>
+<Annotation Term="Common.Label" String="Inkoopcategorie"/>
+<Annotation Term="Common.QuickInfo" String="Inkoopcategorie-ID"/>
+</Property>
+<Property Name="PurgCatName" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Naam inkoopcategorie"/>
+</Property>
+<Property Name="PurgCatUUID" Type="Edm.Guid">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Inkoopcategorie-UUID"/>
+</Property>
+<Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurchasingOrganizationName"/>
+<Annotation Term="Common.Label" String="Inkooporganisatie"/>
+</Property>
+<Property Name="PurchasingOrganizationName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Naam inkooporganisatie"/>
+</Property>
+<Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PurchasingGroupName"/>
+<Annotation Term="Common.Label" String="Inkoopgroep"/>
+</Property>
+<Property Name="PurchasingGroupName" Type="Edm.String" MaxLength="18">
+<Annotation Term="Common.Label" String="Naam inkoopgroep"/>
+</Property>
+<Property Name="PurchasingDocumentOrderDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Documentdatum"/>
+<Annotation Term="Common.QuickInfo" String="Datum van inkoopdocument"/>
+</Property>
+<Property Name="CreatedByUser" Type="Edm.String" MaxLength="12">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Gecreëerd door"/>
+<Annotation Term="Common.QuickInfo" String="Naam van de medewerker die het object heeft toegevoegd"/>
+</Property>
+<Property Name="QuotationSubmissionDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Offertedatum"/>
+<Annotation Term="Common.QuickInfo" String="Afgiftedatum van offerte"/>
+</Property>
+<Property Name="SupplierQuotationExternalID" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Externe-ID offerte"/>
+<Annotation Term="Common.QuickInfo" String="Offertenummer"/>
+</Property>
+<Property Name="CreationDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Gecreëerd op"/>
+<Annotation Term="Common.QuickInfo" String="Documentdatum (gecreëerd op)"/>
+</Property>
+<Property Name="SupplierCreationDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Offerte gecreëerd op"/>
+<Annotation Term="Common.QuickInfo" String="Datum waarop record is toegevoegd"/>
+</Property>
+<Property Name="RFQPublishingDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Publicatiedatum"/>
+<Annotation Term="Common.QuickInfo" String="Publicatiedatum offerteaanvraag"/>
+</Property>
+<Property Name="PlannedQuantity" Type="Edm.Decimal" Precision="13" Scale="3">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Measures.Unit" Path="OrderQuantityUnit"/>
+<Annotation Term="Common.Label" String="Offertehoeveelheid"/>
+<Annotation Term="Common.QuickInfo" String="Indelingshoeveelheid"/>
+</Property>
+<Property Name="AwardedQuantity" Type="Edm.Decimal" Precision="13" Scale="3">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Measures.Unit" Path="OrderQuantityUnit"/>
+<Annotation Term="Common.Label" String="Toegekende hvh."/>
+<Annotation Term="Common.QuickInfo" String="Toegekende hoeveelheid"/>
+</Property>
+<Property Name="IsCriticallyOverdue" Type="Edm.String" MaxLength="1">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Text" Path="OverdueCategoryName"/>
+<Annotation Term="Common.Label" String="Status offertetermijn"/>
+</Property>
+<Property Name="OverdueCategoryName" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Naam van status offertetermijn"/>
+</Property>
+<Property Name="IsEndOfPurposeBlocked" Type="Edm.String" MaxLength="1">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Zakel. doel voltooid"/>
+<Annotation Term="Common.QuickInfo" String="Zakelijk doel voltooid"/>
+</Property>
+<Property Name="DurationToNextStatusInDays" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Text" Path="DomainText"/>
+<Annotation Term="Common.Label" String="Offertetermijn"/>
+</Property>
+<Property Name="DomainText" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Naam offertetermijn"/>
+</Property>
+<Property Name="QtnLifecycleStatus" Type="Edm.String" MaxLength="2">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Text" Path="QtnLifecycleStatusName"/>
+<Annotation Term="Common.Label" String="Offertestatus"/>
+</Property>
+<Property Name="QtnLifecycleStatusName" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Naam offertestatus"/>
+</Property>
+<Property Name="PurchasingIsBlocked" Type="Edm.String" MaxLength="1">
+<Annotation Term="Analytics.Dimension"/>
+</Property>
+<Property Name="PurchasingIsBlockedForSupplier" Type="Edm.String" MaxLength="60">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Status leveranciersblokkering"/>
+<Annotation Term="Common.QuickInfo" String="Geblokkeerde status leverancier"/>
+</Property>
+<NavigationProperty Name="to_ProcmtBlockedSupplier" Type="MM_PUR_RFQITEM_MNTR_SRV.I_ProcmtBlockedSupplierType" Nullable="false"/>
+<NavigationProperty Name="to_ProcmtOverDueItemStatus" Type="MM_PUR_RFQITEM_MNTR_SRV.I_ProcmtOverDueItemStatusType" Nullable="false"/>
+<NavigationProperty Name="to_ProcmtQuotationSts" Type="MM_PUR_RFQITEM_MNTR_SRV.I_ProcmtQuotationStsType" Nullable="false"/>
+<NavigationProperty Name="to_RequestForQtanDeadlineWeek" Type="MM_PUR_RFQITEM_MNTR_SRV.I_RequestForQtanDeadlineWeekType" Nullable="false"/>
+<NavigationProperty Name="to_RFQDeadlineWeek" Type="MM_PUR_RFQITEM_MNTR_SRV.C_RFQDeadlineWeekType" Nullable="false"/>
+<NavigationProperty Name="to_RFQSuppQuotationStatus" Type="MM_PUR_RFQITEM_MNTR_SRV.C_RFQSuppQuotationStatusType" Nullable="false"/>
+<NavigationProperty Name="to_SupplierQuotation" Type="Collection(MM_PUR_RFQITEM_MNTR_SRV.C_SuplrquotationitemfacetType)"/>
+<NavigationProperty Name="Parameters" Type="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrParameters" Nullable="false" Partner="Results">
+<Annotation Term="TODO.filterable" String="false"/>
+</NavigationProperty>
+</EntityType>
+<EntityType Name="C_RequestForQuotationItemMntrParameters">
+<Key>
+<PropertyRef Name="P_DisplayCurrency"/>
+</Key>
+<Property Name="P_DisplayCurrency" Type="Edm.String" Nullable="false" MaxLength="5">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Weergavevaluta"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<NavigationProperty Name="Results" Type="Collection(MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult)" Partner="Parameters"/>
+</EntityType>
+<EntityType Name="C_RFQDeadlineWeekType">
+<Annotation Term="Common.Label" String="Verbruiksview voor RFQ-termijn"/>
+<Key>
+<PropertyRef Name="ID"/>
+</Key>
+<Property Name="ID" Type="Edm.String" Nullable="false"/>
+<Property Name="RequestForQuotation" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Inkoopdocument"/>
+<Annotation Term="Common.QuickInfo" String="Documentnummer van inkoopdocument"/>
+</Property>
+<Property Name="RequestForQuotationItem" Type="Edm.String" MaxLength="5">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Label" String="Aanvraagpositie"/>
+<Annotation Term="Common.QuickInfo" String="Positienummer van aanvraag voor offerte"/>
+</Property>
+<Property Name="QuotationLatestSubmissionDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Label" String="Offertetermijn"/>
+<Annotation Term="Common.QuickInfo" String="Afgiftetermijn voor de offerte"/>
+</Property>
+<Property Name="DomainText" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Naam offertetermijn"/>
+</Property>
+<Property Name="DurationToNextStatusInDays" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.Text" Path="DomainText"/>
+<Annotation Term="Common.Label" String="Offertetermijn"/>
+</Property>
+<Property Name="NumberOfContractItems" Type="Edm.Int32">
+<Annotation Term="Analytics.Measure"/>
+<Annotation Term="Common.Label" String="Aanvraagposities"/>
+<Annotation Term="Common.QuickInfo" String="Aantal contracten"/>
+</Property>
+<Property Name="Plant" Type="Edm.String" MaxLength="4">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Vestiging"/>
+</Property>
+</EntityType>
+<EntityType Name="C_RFQSuppQuotationStatusType">
+<Annotation Term="Common.Label" String="Verbruiksview voor leveranciersofferte"/>
+<Key>
+<PropertyRef Name="ID"/>
+</Key>
+<Property Name="ID" Type="Edm.String" Nullable="false"/>
+<Property Name="RequestForQuotation" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Inkoopdocument"/>
+<Annotation Term="Common.QuickInfo" String="Documentnummer van inkoopdocument"/>
+</Property>
+<Property Name="RequestForQuotationItem" Type="Edm.String" MaxLength="5">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Label" String="Aanvraagpositie"/>
+<Annotation Term="Common.QuickInfo" String="Positienummer van aanvraag voor offerte"/>
+</Property>
+<Property Name="SupplierQuotation" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Inkoopdocument"/>
+<Annotation Term="Common.QuickInfo" String="Documentnummer van inkoopdocument"/>
+</Property>
+<Property Name="SupplierQuotationItem" Type="Edm.String" MaxLength="5">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Label" String="Lev.off.pos."/>
+<Annotation Term="Common.QuickInfo" String="Positienummer van leveranciersofferte"/>
+</Property>
+<Property Name="Plant" Type="Edm.String" MaxLength="4">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Vestiging"/>
+</Property>
+<Property Name="QtnLifecycleStatus" Type="Edm.String" MaxLength="2">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Text" Path="QtnLifecycleStatusName"/>
+<Annotation Term="Common.Label" String="Offertestatus"/>
+</Property>
+<Property Name="QtnLifecycleStatusName" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Naam offertestatus"/>
+</Property>
+<Property Name="NumberOfContractItems" Type="Edm.Int32">
+<Annotation Term="Analytics.Measure"/>
+<Annotation Term="Common.Label" String="Aanvraagposities"/>
+<Annotation Term="Common.QuickInfo" String="Aantal contracten"/>
+</Property>
+<Property Name="Supplier" Type="Edm.String" MaxLength="10">
+<Annotation Term="Analytics.Dimension"/>
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Leverancier"/>
+</Property>
+</EntityType>
+<EntityType Name="C_RFQTypeValueHelpType">
+<Annotation Term="Common.Label" String="Invoerhulp offertesoort"/>
+<Key>
+<PropertyRef Name="RFQType"/>
+</Key>
+<Property Name="RFQType" Type="Edm.String" Nullable="false" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="RFQType_Text"/>
+<Annotation Term="Common.Label" String="Inkoopdoc.soort"/>
+<Annotation Term="Common.QuickInfo" String="Inkoopdocumentsoort"/>
+</Property>
+<Property Name="RFQType_Text" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Omschr. docum.soort"/>
+<Annotation Term="Common.QuickInfo" String="Omschrijving van de inkoopdocumentsoort"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+</EntityType>
+<EntityType Name="C_RFQValueHelpType">
+<Annotation Term="Common.Label" String="Invoerhulp voor offerte"/>
+<Key>
+<PropertyRef Name="RequestForQuotation"/>
+</Key>
+<Property Name="RequestForQuotation" Type="Edm.String" Nullable="false" MaxLength="10">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="RequestForQuotation_Text"/>
+<Annotation Term="Common.Label" String="Offerteaanvraag"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="RequestForQuotation_Text" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Omschr. docum.soort"/>
+<Annotation Term="Common.QuickInfo" String="Omschrijving van de inkoopdocumentsoort"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="RFQType" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Aanvraagsoort"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraagdocumentsoort"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="RFQCategory" Type="Edm.String" MaxLength="1">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Inkoopdocumenttype"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="RequestForQuotationName" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Oms. aanvraag"/>
+<Annotation Term="Common.QuickInfo" String="Korte omschrijving van titel van aanvraag"/>
+</Property>
+<Property Name="CreatedByUser" Type="Edm.String" MaxLength="12">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="FullName"/>
+<Annotation Term="Common.Label" String="Gecreëerd door"/>
+<Annotation Term="Common.QuickInfo" String="Naam van de medewerker die het object heeft toegevoegd"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="FullName" Type="Edm.String" MaxLength="80">
+<Annotation Term="Common.Label" String="Volledige naam"/>
+<Annotation Term="Common.QuickInfo" String="Volledige naam van auteur offerteaanvraag"/>
+</Property>
+<Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Inkooporganisatie"/>
+</Property>
+<Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Inkoopgroep"/>
+</Property>
+<Property Name="PurchasingDocumentType" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Aanvraagsoort"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraagdocumentsoort"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="IsEndOfPurposeBlocked" Type="Edm.Boolean">
+<Annotation Term="Common.Label" String="Zakel. doel voltooid"/>
+<Annotation Term="Common.QuickInfo" String="Zakelijk doel voltooid"/>
+</Property>
+</EntityType>
+<EntityType Name="C_SuplrquotationitemfacetType">
+<Annotation Term="Common.Label" String="Facet offertepositie"/>
+<Key>
+<PropertyRef Name="SupplierQuotation"/>
+<PropertyRef Name="SupplierQuotationItem"/>
+</Key>
+<Property Name="AwardedQuantity_fc" Type="Edm.Byte">
+<Annotation Term="Common.Label" String="Dyn. Feldsteuerung"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="NetPriceAmount_fc" Type="Edm.Byte">
+<Annotation Term="Common.Label" String="Dyn. Feldsteuerung"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="ScheduleLineOrderQuantity_fc" Type="Edm.Byte">
+<Annotation Term="Common.Label" String="Dyn. Feldsteuerung"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="SupplierQuotation" Type="Edm.String" Nullable="false" MaxLength="10">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Leveranciersofferte"/>
+<Annotation Term="Common.QuickInfo" String="Documentnummer van inkoopdocument"/>
+</Property>
+<Property Name="SupplierQuotationItem" Type="Edm.String" Nullable="false" MaxLength="5">
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Label" String="Leveranciersoffertepositie"/>
+<Annotation Term="Common.QuickInfo" String="Positienummer van leveranciersofferte"/>
+</Property>
+<Property Name="Material" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Artikel"/>
+</Property>
+<Property Name="MaterialName" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Artikelomschrijving"/>
+</Property>
+<Property Name="FormattedRFQItem" Type="Edm.String" MaxLength="16">
+<Annotation Term="Common.Label" String="Offerteaanvraag/positie"/>
+</Property>
+<Property Name="RequestedQuantity" Type="Edm.Decimal" Precision="13" Scale="3">
+<Annotation Term="Measures.Unit" Path="OrderQuantityUnit"/>
+<Annotation Term="Common.Label" String="Requested_Qty"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraaghoeveelheid"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="NetAmount" Type="Edm.Decimal" Precision="14" Scale="3">
+<Annotation Term="Measures.ISOCurrency" Path="DocumentCurrency"/>
+<Annotation Term="Common.Label" String="Nettowaarde offerte"/>
+<Annotation Term="Common.QuickInfo" String="Nettowaarde offerte voor aanvraag offertepositie"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="SupplierName" Type="Edm.String" MaxLength="80">
+<Annotation Term="Common.Label" String="Naam van leverancier"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="Supplier" Type="Edm.String" MaxLength="10">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="SupplierName"/>
+<Annotation Term="Common.Label" String="Leverancier"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="PurchasingDocumentCategory" Type="Edm.String" MaxLength="1">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Inkoopdocumenttype"/>
+<Annotation Term="Common.QuickInfo" String="Type inkoopdocument"/>
+</Property>
+<Property Name="PurchasingDocumentItemText" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Korte tekst"/>
+</Property>
+<Property Name="CreationDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Common.Label" String="Gecreëerd op"/>
+<Annotation Term="Common.QuickInfo" String="Datum waarop record is toegevoegd"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="ScheduleLineOrderQuantity" Type="Edm.Decimal" Precision="13" Scale="3">
+<Annotation Term="Common.FieldControl" Path="ScheduleLineOrderQuantity_fc"/>
+<Annotation Term="Measures.Unit" Path="OrderQuantityUnit"/>
+<Annotation Term="Common.Label" String="Offertehoeveelheid"/>
+<Annotation Term="Common.QuickInfo" String="Indelingshoeveelheid"/>
+</Property>
+<Property Name="AwardedQuantity" Type="Edm.Decimal" Precision="13" Scale="3">
+<Annotation Term="Common.FieldControl" Path="AwardedQuantity_fc"/>
+<Annotation Term="Measures.Unit" Path="OrderQuantityUnit"/>
+<Annotation Term="Common.Label" String="Toegekende hvh."/>
+<Annotation Term="Common.QuickInfo" String="Toegekende hoeveelheid"/>
+</Property>
+<Property Name="MaterialGroup" Type="Edm.String" MaxLength="9">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="MaterialGroupName"/>
+<Annotation Term="Common.Label" String="Goederengroep"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="MaterialGroupName" Type="Edm.String" MaxLength="20">
+<Annotation Term="Common.Label" String="Productgroepomschr."/>
+<Annotation Term="Common.QuickInfo" String="Productgroepomschrijving"/>
+</Property>
+<Property Name="Plant" Type="Edm.String" MaxLength="4">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Text" Path="PlantName"/>
+<Annotation Term="Common.Label" String="Vestiging"/>
+</Property>
+<Property Name="PlantName" Type="Edm.String" MaxLength="30">
+<Annotation Term="Common.Label" String="Naam vestiging"/>
+</Property>
+<Property Name="ScheduleLineDeliveryDate" Type="Edm.Date" Precision="0">
+<Annotation Term="Common.Label" String="Leveringsdatum"/>
+</Property>
+<Property Name="OrderQuantityUnit" Type="Edm.String" MaxLength="3">
+<Annotation Term="Common.Label" String="Bestelhoevh.eenheid"/>
+<Annotation Term="Common.QuickInfo" String="Bestelhoeveelheidseenheid"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="NetPriceAmount" Type="Edm.Decimal" Precision="12" Scale="3">
+<Annotation Term="Common.FieldControl" Path="NetPriceAmount_fc"/>
+<Annotation Term="Measures.ISOCurrency" Path="DocumentCurrency"/>
+<Annotation Term="Common.Label" String="Nettoprijs bestell."/>
+<Annotation Term="Common.QuickInfo" String="Nettoprijs in inkoopdocument in documentvaluta"/>
+</Property>
+<Property Name="DocumentCurrency" Type="Edm.String" MaxLength="5">
+<Annotation Term="Common.Label" String="Valuta"/>
+<Annotation Term="Common.QuickInfo" String="Valutacode"/>
+</Property>
+<Property Name="RefPurchaseRequisitionItem" Type="Edm.String" MaxLength="16">
+<Annotation Term="Common.Label" String="Aanvraag tot bestellen/positie"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraag tot bestellen/positie-ID"/>
+</Property>
+<Property Name="RequestForQuotation" Type="Edm.String" MaxLength="10">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Aanvraag"/>
+<Annotation Term="Common.QuickInfo" String="ID voor aanvraag"/>
+</Property>
+<Property Name="RequestForQuotationItem" Type="Edm.String" MaxLength="5">
+<Annotation Term="Common.IsDigitSequence"/>
+<Annotation Term="Common.Label" String="Pos.nr. v. aanvraag"/>
+<Annotation Term="Common.QuickInfo" String="Aanvraagpositienummer voor offerte"/>
+</Property>
+<Property Name="PurchasingInfoRecord" Type="Edm.String" MaxLength="10">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Inkoopinforecord"/>
+<Annotation Term="Common.QuickInfo" String="Nummer van inkoopinforecord"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+</EntityType>
+<EntityType Name="I_CurrencyType">
+<Annotation Term="Common.Label" String="Valuta"/>
+<Key>
+<PropertyRef Name="Currency"/>
+</Key>
+<Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5">
+<Annotation Term="Common.Text" Path="Currency_Text"/>
+<Annotation Term="Common.Label" String="Valuta"/>
+<Annotation Term="Common.QuickInfo" String="Valutacode"/>
+</Property>
+<Property Name="Currency_Text" Type="Edm.String" MaxLength="40">
+<Annotation Term="Common.Label" String="Omschrijving"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+<Property Name="Decimals" Type="Edm.Byte">
+<Annotation Term="Common.Label" String="Decimalen"/>
+<Annotation Term="Common.QuickInfo" String="Aantal decimalen"/>
+</Property>
+<Property Name="CurrencyISOCode" Type="Edm.String" MaxLength="3">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="ISO-code"/>
+<Annotation Term="Common.QuickInfo" String="ISO-valutacode"/>
+</Property>
+<Property Name="AlternativeCurrencyKey" Type="Edm.String" MaxLength="3">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Alternatieve code"/>
+</Property>
+<Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean">
+<Annotation Term="Common.IsUpperCase"/>
+<Annotation Term="Common.Label" String="Primair"/>
+<Annotation Term="Common.QuickInfo" String="Primaire SAP-valutacode van ISO-code"/>
+</Property>
+</EntityType>
+<EntityType Name="I_ProcmtBlockedSupplierType">
+<Annotation Term="Common.Label" String="Voor verwerving geblokkeerde leverancier"/>
+<Key>
+<PropertyRef Name="PurchasingIsBlockedForSupplier"/>
+</Key>
+<Property Name="PurchasingIsBlockedForSupplier" Type="Edm.String" Nullable="false" MaxLength="10">
+<Annotation Term="Common.Text" Path="PurchasingIsBlockedForSupplier_Text"/>
+</Property>
+<Property Name="PurchasingIsBlockedForSupplier_Text" Type="Edm.String" MaxLength="60">
+<Annotation Term="Core.Computed"/>
+</Property>
+</EntityType>
+<EntityType Name="I_ProcmtOverDueItemStatusType">
+<Annotation Term="Common.Label" String="iView voor status van positie over tijd"/>
+<Key>
+<PropertyRef Name="IsCriticallyOverdue"/>
+</Key>
+<Property Name="IsCriticallyOverdue" Type="Edm.String" Nullable="false" MaxLength="10">
+<Annotation Term="Common.Text" Path="IsCriticallyOverdue_Text"/>
+</Property>
+<Property Name="IsCriticallyOverdue_Text" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Status offertetermijn"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+</EntityType>
+<EntityType Name="I_ProcmtQuotationStsType">
+<Annotation Term="Common.Label" String="iView voor offertestatus"/>
+<Key>
+<PropertyRef Name="QtnLifecycleStatus"/>
+</Key>
+<Property Name="QtnLifecycleStatus" Type="Edm.String" Nullable="false" MaxLength="10">
+<Annotation Term="Common.Text" Path="QtnLifecycleStatus_Text"/>
+</Property>
+<Property Name="QtnLifecycleStatus_Text" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Offertestatus"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+</EntityType>
+<EntityType Name="I_RequestForQtanDeadlineWeekType">
+<Annotation Term="Common.Label" String="iView voor deadlineweek offerteaanvraag"/>
+<Key>
+<PropertyRef Name="DurationToNextStatusInDays"/>
+</Key>
+<Property Name="DurationToNextStatusInDays" Type="Edm.String" Nullable="false" MaxLength="10">
+<Annotation Term="Common.Text" Path="DurationToNextStatusInDays_Text"/>
+</Property>
+<Property Name="DurationToNextStatusInDays_Text" Type="Edm.String" MaxLength="60">
+<Annotation Term="Common.Label" String="Offertetermijn"/>
+<Annotation Term="Core.Computed"/>
+</Property>
+</EntityType>
+<EntityContainer Name="MM_PUR_RFQITEM_MNTR_SRV_Entities">
+<EntitySet Name="C_MM_CompanyCodeValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_MM_CompanyCodeValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_MM_IncotermValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_MM_IncotermValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_MM_MaterialGroupValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_MM_MaterialGroupValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_MM_MaterialValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_MM_MaterialValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_MM_PaymentTermValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_MM_PaymentTermValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_MM_PlantValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_MM_PlantValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_MM_SmplSupplierValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_MM_SmplSupplierValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_PurchasingCategoryValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_PurchasingCategoryValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_PurchasingGroupValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_PurchasingGroupValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_PurchasingOrgValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_PurchasingOrgValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_PurDocItemCategoryValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_PurDocItemCategoryValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>PurchasingDocumentItemCategory</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_Purrfqstatus" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_PurrfqstatusType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_QTNFollowOnDocumentVH" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_QTNFollowOnDocumentVHType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_RequestForQuotationItemMntrResults" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.ReadRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Readable"/>
+</Record>
+</Annotation>
+<NavigationPropertyBinding Target="I_ProcmtQuotationSts" Path="to_ProcmtQuotationSts"/>
+<NavigationPropertyBinding Target="C_RFQDeadlineWeek" Path="to_RFQDeadlineWeek"/>
+<NavigationPropertyBinding Target="I_ProcmtOverDueItemStatus" Path="to_ProcmtOverDueItemStatus"/>
+<NavigationPropertyBinding Target="C_RFQSuppQuotationStatus" Path="to_RFQSuppQuotationStatus"/>
+<NavigationPropertyBinding Target="I_ProcmtBlockedSupplier" Path="to_ProcmtBlockedSupplier"/>
+<NavigationPropertyBinding Target="C_Suplrquotationitemfacet" Path="to_SupplierQuotation"/>
+<NavigationPropertyBinding Target="C_RequestForQuotationItemMntr" Path="Parameters"/>
+<NavigationPropertyBinding Target="I_RequestForQtanDeadlineWeek" Path="to_RequestForQtanDeadlineWeek"/>
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="RFQType"/>
+<PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="BindingPeriodValidityEndDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="Status"/>
+<PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="ScheduleLineDeliveryDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="QuotationLatestSubmissionDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="PurchasingDocumentOrderDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="CreationDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="RFQPublishingDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+<PropertyPath>ActiveSupplierQuotation</PropertyPath>
+<PropertyPath>RefPurchaseRequisitionItem</PropertyPath>
+<PropertyPath>ActiveRFQItem</PropertyPath>
+<PropertyPath>NumberOfContractItems</PropertyPath>
+<PropertyPath>ActiveRequestForQuotation</PropertyPath>
+<PropertyPath>FormattedRFQItem</PropertyPath>
+<PropertyPath>DocumentCurrency</PropertyPath>
+<PropertyPath>DueDateCriticality</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+<PropertyPath>ActiveRFQItem</PropertyPath>
+<PropertyPath>DocumentCurrency</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_RequestForQuotationItemMntr" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrParameters">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Bool="false" Term="Capabilities.TopSupported"/>
+<Annotation Bool="false" Term="Capabilities.SkipSupported"/>
+<NavigationPropertyBinding Target="C_RequestForQuotationItemMntrResults" Path="Results"/>
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>P_DisplayCurrency</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>P_DisplayCurrency</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="Results"/>
+<PropertyValue Property="ReadRestrictions">
+<Record>
+<PropertyValue Property="Readable">
+<Bool>true</Bool>
+</PropertyValue>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Searchable"/>
+</Record>
+</Annotation>
+<Annotation Term="sap.parameters"/>
+</EntitySet>
+<EntitySet Name="C_RFQDeadlineWeek" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_RFQDeadlineWeekType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+<PropertyPath>NumberOfContractItems</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_RFQSuppQuotationStatus" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_RFQSuppQuotationStatusType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+<PropertyPath>NumberOfContractItems</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_RFQTypeValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_RFQTypeValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_RFQValueHelp" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_RFQValueHelpType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="C_Suplrquotationitemfacet" EntityType="MM_PUR_RFQITEM_MNTR_SRV.C_SuplrquotationitemfacetType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>AwardedQuantity_fc</PropertyPath>
+<PropertyPath>NetPriceAmount_fc</PropertyPath>
+<PropertyPath>ScheduleLineOrderQuantity_fc</PropertyPath>
+<PropertyPath>RequestedQuantity</PropertyPath>
+<PropertyPath>NetAmount</PropertyPath>
+<PropertyPath>ScheduleLineOrderQuantity</PropertyPath>
+<PropertyPath>AwardedQuantity</PropertyPath>
+<PropertyPath>NetPriceAmount</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>AwardedQuantity_fc</PropertyPath>
+<PropertyPath>NetPriceAmount_fc</PropertyPath>
+<PropertyPath>ScheduleLineOrderQuantity_fc</PropertyPath>
+<PropertyPath>RequestedQuantity</PropertyPath>
+<PropertyPath>NetAmount</PropertyPath>
+<PropertyPath>ScheduleLineOrderQuantity</PropertyPath>
+<PropertyPath>AwardedQuantity</PropertyPath>
+<PropertyPath>NetPriceAmount</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="I_Currency" EntityType="MM_PUR_RFQITEM_MNTR_SRV.I_CurrencyType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="I_ProcmtBlockedSupplier" EntityType="MM_PUR_RFQITEM_MNTR_SRV.I_ProcmtBlockedSupplierType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="I_ProcmtOverDueItemStatus" EntityType="MM_PUR_RFQITEM_MNTR_SRV.I_ProcmtOverDueItemStatusType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="I_ProcmtQuotationSts" EntityType="MM_PUR_RFQITEM_MNTR_SRV.I_ProcmtQuotationStsType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+<EntitySet Name="I_RequestForQtanDeadlineWeek" EntityType="MM_PUR_RFQITEM_MNTR_SRV.I_RequestForQtanDeadlineWeekType">
+<Annotation Term="Capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Insertable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Updatable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Bool="true" Property="Searchable"/>
+</Record>
+</Annotation>
+</EntitySet>
+</EntityContainer>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/RequestForQuotation">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Request for Quotation Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_RFQValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="RequestForQuotation"/>
+<PropertyValue Property="ValueListProperty" String="RequestForQuotation"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="CreatedByUser"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="FullName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="RFQCategory"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="RFQType"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="RequestForQuotationName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="RequestForQuotation_Text"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/Supplier">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Simple Supplier Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_MM_SmplSupplierValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="Supplier"/>
+<PropertyValue Property="ValueListProperty" String="Supplier"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="Country"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="SupplierName"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/Material">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Material Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_MM_MaterialValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="Material"/>
+<PropertyValue Property="ValueListProperty" String="Material"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="AuthorizationGroup"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="MaterialGroupName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="MaterialName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="MaterialType"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="MaterialTypeName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="Plant"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PlantName"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/Plant">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Plant Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_MM_PlantValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>
+<PropertyValue Property="ValueListProperty" String="Plant"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="CityName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PlantName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PostalCode"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PurchasingOrganization"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PurchasingOrganizationName"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/RFQType">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="RFQ Type Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_RFQTypeValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="RFQType"/>
+<PropertyValue Property="ValueListProperty" String="RFQType"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="RFQType_Text"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Common.ValueListWithFixedValues"/>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/PurgDocExternalItemCategory">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Purchasing Doc Item Category Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_PurDocItemCategoryValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="PurgDocExternalItemCategory"/>
+<PropertyValue Property="ValueListProperty" String="PurgDocExternalItemCategory"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PurgDocItemCategoryName"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/Status">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="RFQ STATUS VALUE HELP"/>
+<PropertyValue Property="CollectionPath" String="C_Purrfqstatus"/>
+<PropertyValue Property="SearchSupported" Bool="false"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="Status"/>
+<PropertyValue Property="ValueListProperty" String="Status"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="Name"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Common.ValueListWithFixedValues"/>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/CompanyCode">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Company Code Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_MM_CompanyCodeValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+<PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/MaterialGroup">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Material Group Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_MM_MaterialGroupValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="MaterialGroup"/>
+<PropertyValue Property="ValueListProperty" String="MaterialGroup"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="MaterialGroupName"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/PurchasingCategory">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Purchasing Category Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_PurchasingCategoryValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingCategory"/>
+<PropertyValue Property="ValueListProperty" String="PurchasingCategory"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PurgCatIsInactive"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PurgCatName"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/PurchasingOrganization">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Purchasing Organization Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_PurchasingOrgValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingOrganization"/>
+<PropertyValue Property="ValueListProperty" String="PurchasingOrganization"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PurchasingOrganizationName"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/PurchasingGroup">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Purchasing Group Value Help"/>
+<PropertyValue Property="CollectionPath" String="C_PurchasingGroupValueHelp"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="PurchasingGroup"/>
+<PropertyValue Property="ValueListProperty" String="PurchasingGroup"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="EmailAddress"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="FaxNumber"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PhoneNumber"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PhoneNumberExtension"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PurchasingGroupName"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="PurchasingGroupPhoneNumber"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/IsCriticallyOverdue">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="I view for Overdue Item Status"/>
+<PropertyValue Property="CollectionPath" String="I_ProcmtOverDueItemStatus"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="IsCriticallyOverdue"/>
+<PropertyValue Property="ValueListProperty" String="IsCriticallyOverdue"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="IsCriticallyOverdue_Text"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/DurationToNextStatusInDays">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="I view for RFQ Deadline Week"/>
+<PropertyValue Property="CollectionPath" String="I_RequestForQtanDeadlineWeek"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="DurationToNextStatusInDays"/>
+<PropertyValue Property="ValueListProperty" String="DurationToNextStatusInDays"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="DurationToNextStatusInDays_Text"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult/QtnLifecycleStatus">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="I view for Quotation Status"/>
+<PropertyValue Property="CollectionPath" String="I_ProcmtQuotationSts"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="QtnLifecycleStatus"/>
+<PropertyValue Property="ValueListProperty" String="QtnLifecycleStatus"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="QtnLifecycleStatus_Text"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrParameters/P_DisplayCurrency">
+<Annotation Term="Common.ValueList">
+<Record>
+<PropertyValue Property="Label" String="Currency"/>
+<PropertyValue Property="CollectionPath" String="I_Currency"/>
+<PropertyValue Property="SearchSupported" Bool="true"/>
+<PropertyValue Property="Parameters">
+<Collection>
+<Record Type="Common.ValueListParameterInOut">
+<PropertyValue Property="LocalDataProperty" PropertyPath="P_DisplayCurrency"/>
+<PropertyValue Property="ValueListProperty" String="Currency"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="AlternativeCurrencyKey"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="CurrencyISOCode"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="Currency_Text"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="Decimals"/>
+</Record>
+<Record Type="Common.ValueListParameterDisplayOnly">
+<PropertyValue Property="ValueListProperty" String="IsPrimaryCurrencyForISOCrcy"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.MM_PUR_RFQITEM_MNTR_SRV_Entities">
+<Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+<Annotation Term="Aggregation.ApplySupported">
+<Record>
+<PropertyValue Property="Transformations">
+<Collection>
+<String>aggregate</String>
+<String>groupby</String>
+<String>filter</String>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="Rollup" EnumMember="None"/>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RFQValueHelpType/PurchasingGroup">
+<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RFQValueHelpType/PurchasingOrganization">
+<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.MM_PUR_RFQITEM_MNTR_SRV_Entities/C_PurDocItemCategoryValueHelp">
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>PurchasingDocumentItemCategory</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.MM_PUR_RFQITEM_MNTR_SRV_Entities/C_RFQDeadlineWeek">
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+<PropertyPath>NumberOfContractItems</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.MM_PUR_RFQITEM_MNTR_SRV_Entities/C_RFQSuppQuotationStatus">
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+<PropertyPath>NumberOfContractItems</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.MM_PUR_RFQITEM_MNTR_SRV_Entities/C_RequestForQuotationItemMntr">
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>P_DisplayCurrency</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+<PropertyValue Property="FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>P_DisplayCurrency</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.MM_PUR_RFQITEM_MNTR_SRV_Entities/C_RequestForQuotationItemMntrResults">
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+<PropertyPath>ActiveSupplierQuotation</PropertyPath>
+<PropertyPath>RefPurchaseRequisitionItem</PropertyPath>
+<PropertyPath>ActiveRFQItem</PropertyPath>
+<PropertyPath>NumberOfContractItems</PropertyPath>
+<PropertyPath>ActiveRequestForQuotation</PropertyPath>
+<PropertyPath>FormattedRFQItem</PropertyPath>
+<PropertyPath>DocumentCurrency</PropertyPath>
+<PropertyPath>DueDateCriticality</PropertyPath>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="RFQType"/>
+<PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="BindingPeriodValidityEndDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="Status"/>
+<PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="ScheduleLineDeliveryDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="QuotationLatestSubmissionDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="PurchasingDocumentOrderDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="CreationDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="RFQPublishingDate"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>ID</PropertyPath>
+<PropertyPath>ActiveRFQItem</PropertyPath>
+<PropertyPath>DocumentCurrency</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.MM_PUR_RFQITEM_MNTR_SRV_Entities/C_Suplrquotationitemfacet">
+<Annotation Term="Capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>AwardedQuantity_fc</PropertyPath>
+<PropertyPath>NetPriceAmount_fc</PropertyPath>
+<PropertyPath>ScheduleLineOrderQuantity_fc</PropertyPath>
+<PropertyPath>RequestedQuantity</PropertyPath>
+<PropertyPath>NetAmount</PropertyPath>
+<PropertyPath>ScheduleLineOrderQuantity</PropertyPath>
+<PropertyPath>AwardedQuantity</PropertyPath>
+<PropertyPath>NetPriceAmount</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="Capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>AwardedQuantity_fc</PropertyPath>
+<PropertyPath>NetPriceAmount_fc</PropertyPath>
+<PropertyPath>ScheduleLineOrderQuantity_fc</PropertyPath>
+<PropertyPath>RequestedQuantity</PropertyPath>
+<PropertyPath>NetAmount</PropertyPath>
+<PropertyPath>ScheduleLineOrderQuantity</PropertyPath>
+<PropertyPath>AwardedQuantity</PropertyPath>
+<PropertyPath>NetPriceAmount</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_MM_CompanyCodeValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>CompanyCode</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_MM_IncotermValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>IncotermsClassification</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_MM_MaterialGroupValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>MaterialGroup</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_MM_MaterialValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>Plant</PropertyPath>
+<PropertyPath>Material</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_MM_PaymentTermValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>PaymentTermsValidityMonthDay</PropertyPath>
+<PropertyPath>PaymentTerms</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_MM_PlantValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>PurchasingOrganization</PropertyPath>
+<PropertyPath>Plant</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_MM_SmplSupplierValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>CompanyCode</PropertyPath>
+<PropertyPath>Supplier</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_PurDocItemCategoryValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>PurchasingDocumentItemCategory</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_PurchasingCategoryValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>PurchasingCategory</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_PurchasingGroupValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>PurchasingGroup</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_PurchasingOrgValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>PurchasingOrganization</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_PurrfqstatusType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>Status</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RFQTypeValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>RFQType</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RFQValueHelpType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>RequestForQuotation</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_RequestForQuotationItemMntrResult">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>ActiveRequestForQuotation</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.C_SuplrquotationitemfacetType">
+<Annotation Term="Common.SemanticKey">
+<Collection>
+<PropertyPath>SupplierQuotation</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.I_CurrencyType/Currency">
+<Annotation Term="Common.UnitSpecificScale" Path="Decimals"/>
+</Annotations>
+<Annotations Target="MM_PUR_RFQITEM_MNTR_SRV.MM_PUR_RFQITEM_MNTR_SRV_Entities/C_RequestForQuotationItemMntr">
+<Annotation Term="Capabilities.ReadRestrictions">
+<Record>
+<PropertyValue Bool="false" Property="Readable"/>
+</Record>
+</Annotation>
+</Annotations>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>
